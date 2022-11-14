@@ -1,8 +1,8 @@
 ---
 title: "<br />Introduction to `renv`"
-subtitle: "<i>Project-local R dependencies management</i>"
-date: .inst[December 2021]
-author: <br /><br /><br />Nicolas Casajus
+subtitle: "<br />"
+author: <br /><br />Nicolas CASAJUS<br />.inst[nicolas.casajus at fondationbiodiversite.fr]
+date: .inst[Jeudi 30 novembre 2022]
 output:
   xaringan::moon_reader:
     css: ["css/xaringan-themer.css", "css/custom.css"]

@@ -3,10 +3,10 @@
   <head>
     <title> Introduction to renv</title>
     <meta charset="utf-8" />
-    <meta name="author" content="   Nicolas Casajus" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
-    <link href="libs/font-awesome-5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="libs/font-awesome-5.15.3/css/v4-shims.min.css" rel="stylesheet" />
+    <meta name="author" content="  Nicolas CASAJUS .inst[nicolas.casajus at fondationbiodiversite.fr]" />
+    <script src="libs/header-attrs-2.18/header-attrs.js"></script>
+    <link href="libs/font-awesome-6.2.0/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.2.0/css/v4-shims.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
@@ -14,10 +14,18 @@
     <textarea id="source">
 class: right, middle, title-slide
 
+.title[
 # <br />Introduction to <code>renv</code>
-## <i>Project-local R dependencies management</i>
-### <br /><br /><br />Nicolas Casajus
-### .inst[December 2021]
+]
+.subtitle[
+## <br />
+]
+.author[
+### <br /><br />Nicolas CASAJUS<br />.inst[nicolas.casajus at fondationbiodiversite.fr]
+]
+.date[
+### .inst[Jeudi 30 novembre 2022]
+]
 
 ---
 
@@ -26,16 +34,16 @@ class: right, middle, title-slide
 
 ## Degrees of Reproducibility
 
-<i class="fa fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Research compendium&lt;br/&gt;
-<i class="fa fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Version control&lt;br/&gt;
-<i class="fa fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Literate programming&lt;br/&gt;
-<i class="fa fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Code refactoring
+<i class="far fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Research compendium&lt;br/&gt;
+<i class="far fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Version control&lt;br/&gt;
+<i class="far fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Literate programming&lt;br/&gt;
+<i class="far fa-thumbs-up emph" role="presentation" aria-label="thumbs-up icon"></i> &amp;nbsp;Code refactoring
 
 --
 
 &lt;br/&gt;
 
-What about R packages (and their versions)&amp;nbsp;<i class="fa fa-question-circle" role="presentation" aria-label="question-circle icon"></i>
+What about R packages (and their versions)&amp;nbsp;<i class="far fa-circle-question" role="presentation" aria-label="circle-question icon"></i>
 
 --
 
@@ -63,10 +71,10 @@ What about R packages (and their versions)&amp;nbsp;<i class="fa fa-question-cir
 
 `renv` makes your project more:
 
-<i class="fa fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;**Isolated**: 
+<i class="far fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;**Isolated**: 
 each project has its own library of <i class="fab fa-r-project" role="presentation" aria-label="r-project icon"></i> packages.
 
-<i class="fa fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;**Portable** and **reproducible**: 
+<i class="far fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;**Portable** and **reproducible**: 
 `renv` captures the state of your <i class="fab fa-r-project" role="presentation" aria-label="r-project icon"></i> packages 
 within a _lockfile_.
 
@@ -82,11 +90,11 @@ Inspired from <i class="fab fa-python" role="presentation" aria-label="python ic
 
 --
 
-<i class="fa fa-hand-point-right" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;`Package` - a 
+<i class="far fa-hand-point-right" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;`Package` - a 
 collection of <i class="fab fa-r-project" role="presentation" aria-label="r-project icon"></i> functions, data, and compiled 
 code in a well-defined format. 
 
-<i class="fa fa-hand-point-right" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;`Library` - the 
+<i class="far fa-hand-point-right" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;`Library` - the 
 directory into which packages are installed.
 
 
@@ -356,7 +364,7 @@ This is a simple **JSON** file that specifies metadata on the <i class="fab fa-r
 
 - To collaborate with others you **only** need to share this file
 
-<i class="fa fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;Reproducibility
+<i class="far fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;Reproducibility
 
 ---
 
@@ -583,7 +591,7 @@ renv::restore()
 
 &lt;br /&gt;
 
-<i class="fa fa-exclamation-triangle emph" role="presentation" aria-label="exclamation-triangle icon"></i> &amp;nbsp; One limit: collaborators need
+<i class="fas fa-triangle-exclamation emph" role="presentation" aria-label="triangle-exclamation icon"></i> &amp;nbsp; One limit: collaborators need
 to have the **same major version** of <i class="fab fa-r-project" role="presentation" aria-label="r-project icon"></i>
 
 
@@ -688,6 +696,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
