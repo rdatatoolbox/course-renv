@@ -3,10 +3,10 @@
   <head>
     <title> Introduction to renv</title>
     <meta charset="utf-8" />
-    <meta name="author" content="  Nicolas CASAJUS .inst[nicolas.casajus at fondationbiodiversite.fr]" />
-    <script src="libs/header-attrs-2.18/header-attrs.js"></script>
-    <link href="libs/font-awesome-6.2.0/css/all.min.css" rel="stylesheet" />
-    <link href="libs/font-awesome-6.2.0/css/v4-shims.min.css" rel="stylesheet" />
+    <meta name="author" content="  Nicolas CASAJUS .inst[Data scientist @ FRB-CESAB]" />
+    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
@@ -21,10 +21,10 @@ class: right, middle, title-slide
 ## <br />
 ]
 .author[
-### <br /><br />Nicolas CASAJUS<br />.inst[nicolas.casajus at fondationbiodiversite.fr]
+### <br /><br />Nicolas CASAJUS<br />.inst[Data scientist @ FRB-CESAB]
 ]
 .date[
-### .inst[Jeudi 1er décembre 2022]
+### .inst[November 2023]
 ]
 
 ---
@@ -43,7 +43,7 @@ class: right, middle, title-slide
 
 &lt;br/&gt;
 
-What about R packages (and their versions)&amp;nbsp;<i class="far fa-circle-question" role="presentation" aria-label="circle-question icon"></i>
+What about <i class="fab fa-r-project" role="presentation" aria-label="r-project icon"></i> packages (and their versions)?
 
 --
 
@@ -107,8 +107,8 @@ By default, <i class="fab fa-r-project" role="presentation" aria-label="r-projec
 
 ```r
 .libPaths()
-## [1] "/Users/nicolascasajus/Library/R/4.1/library"
-## [2] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library"
+## [1] "C:/Users/Jane/AppData/Local/R/win-library/4.3"
+## [2] "C:/Program Files/R/R-4.3.2/library"
 ```
 
 The first is the **user** library and the second the **system** library.
@@ -120,10 +120,10 @@ The first is the **user** library and the second the **system** library.
 
 ```r
 find.package("rmarkdown")
-## [1] "/Users/nicolascasajus/Library/R/4.1/library/rmarkdown"
+## [1] "C:/Users/Jane/AppData/Local/R/win-library/4.3/rmarkdown"
 
 find.package("base")
-## [1] "/Library/Frameworks/R.framework/Resources/library/base"
+## [1] "C:/PROGRA~1/R/R-43~1.2/library/base"
 ```
 
 ---
@@ -193,7 +193,7 @@ renv::init()
 
 - Initialization with RStudio
 
-.center[![:scale 35%](img/rstudio-renv.png)]
+![:scale 35%](img/rstudio-renv.png)
 
 ---
 
@@ -202,11 +202,11 @@ renv::init()
 When you open the project you will see this welcome message:
 
 ```
-R version 4.1.2 (2021-11-01) -- "Bird Hippie"
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin17.0 (64-bit)
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
-* Project '~/Desktop/myproject' loaded. [renv 0.14.0]
+- Project '~/Documents/myproject' loaded. [renv 1.0.3]
 &gt;
 ```
 
@@ -245,7 +245,19 @@ What happened?
 ```
 .
 ├── (.git)             # Git files
-└── (.gitignore)       # Untracked files by git
+├── (.gitignore)       # Untracked files by git
+│
+├── (myproject.Rproj)
+│
+├── .Rprofile
+│
+├── renv
+│   ├── .gitignore
+│   ├── activate.R
+│   ├── library
+│   └── settings.dcf
+│
+└── renv.lock
 ```
 
 
@@ -260,7 +272,17 @@ What happened?
 ├── (.git)             # Git files
 ├── (.gitignore)       # Untracked files by git
 │
-└── (myproject.Rproj)  # RStudio files
+├── (myproject.Rproj)  # RStudio files
+│
+├── .Rprofile
+│
+├── renv
+│   ├── .gitignore
+│   ├── activate.R
+│   ├── library
+│   └── settings.dcf
+│
+└── renv.lock
 ```
 
 ---
@@ -276,7 +298,15 @@ What happened?
 │
 ├── (myproject.Rproj)  # RStudio files
 │
-└── .Rprofile          # Activate renv on project opening
+├── .Rprofile          # Activate renv on project opening
+│
+├── renv
+│   ├── .gitignore
+│   ├── activate.R
+│   ├── library
+│   └── settings.dcf
+│
+└── renv.lock
 ```
 
 
@@ -295,11 +325,13 @@ What happened?
 │
 ├── .Rprofile          # Activate renv on project opening
 │
-└── renv
-    ├── .gitignore     # Ignore large renv files (e.g. packages)
-    ├── activate.R     # R script to launch renv
-    ├── library        # R packages
-    └── settings.dcf   # renv settings
+├── renv
+│   ├── .gitignore     # Ignore large renv files (e.g. packages)
+│   ├── activate.R     # R script to launch renv
+│   ├── library        # R packages
+│   └── settings.dcf   # renv settings
+│
+└── renv.lock
 ```
 
 
@@ -336,21 +368,21 @@ What happened?
 ```
 {
   "R": {
-    "Version": "4.1.2",
+    "Version": "4.3.1",
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cloud.r-project.org"
+        "URL": "https://packagemanager.posit.co/cran/latest"
       }
     ]
   },
   "Packages": {
     "renv": {
       "Package": "renv",
-      "Version": "0.14.0",
+      "Version": "1.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "30e5eba91b67f7f4d75d31de14bbfbdc"
+      "Hash": "41b847654f567341725473431dd0d5ab"
     }
   }
 }
@@ -364,7 +396,6 @@ This is a simple **JSON** file that specifies metadata on the <i class="fab fa-r
 
 - To collaborate with others you **only** need to share this file
 
-<i class="far fa-hand-point-right emph" role="presentation" aria-label="hand-point-right icon"></i> &amp;nbsp;Reproducibility
 
 ---
 
@@ -456,8 +487,7 @@ renv::status()
 
 ## The following package(s) are installed but not recorded in the lockfile:
 ## 
-##  ggplot2        [3.3.5]
-##  [...]
+##  ggplot2        [3.4.4]
 ## 
 ## Use `renv::snapshot()` to add these packages to your lockfile.
 ```
@@ -473,8 +503,7 @@ renv::snapshot()
 ## The following package(s) will be updated in the lockfile:
 ## 
 ## # CRAN ===============================
-## - ggplot2        [* -&gt; 3.3.5]
-## - ...
+## - ggplot2        [* -&gt; 3.4.4]
 ##
 ## Do you want to proceed? [y/N]: y
 ## 
@@ -504,8 +533,7 @@ renv::status()
 
 ## The following package(s) are no longer used in this project:
 ## 
-##  ggplot2        [3.3.5]
-##  [...]
+##  ggplot2        [3.4.4]
 ## 
 ## Use `renv::snapshot()` to remove them from the lockfile.
 ```
@@ -521,8 +549,7 @@ renv::snapshot()
 ## The following package(s) will be updated in the lockfile:
 ## 
 ## # CRAN ===============================
-## - ggplot2        [* -&gt; 3.3.5]
-## - ...
+## - ggplot2        [* -&gt; 3.4.4]
 ##
 ## Do you want to proceed? [y/N]: y
 ## 
@@ -575,7 +602,7 @@ renv::restore()
 ## The following package(s) will be updated:
 ## 
 ## # CRAN ===============================
-## - ggplot2        [* -&gt; 3.3.5]
+## - ggplot2        [* -&gt; 3.4.4]
 ## 
 ## Do you want to proceed? [y/N]: y
 ##
