@@ -213,10 +213,10 @@ What happened?
 │
 ├── .Rprofile
 │
-├── renv
+├── renv/
 │   ├── .gitignore
 │   ├── activate.R
-│   ├── library
+│   ├── library/
 │   └── settings.dcf
 │
 └── renv.lock
@@ -237,10 +237,10 @@ What happened?
 │
 ├── .Rprofile
 │
-├── renv
+├── renv/
 │   ├── .gitignore
 │   ├── activate.R
-│   ├── library
+│   ├── library/
 │   └── settings.dcf
 │
 └── renv.lock
@@ -262,10 +262,10 @@ What happened?
 │
 ├── .Rprofile
 │
-├── renv
+├── renv/
 │   ├── .gitignore
 │   ├── activate.R
-│   ├── library
+│   ├── library/
 │   └── settings.dcf
 │
 └── renv.lock
@@ -286,10 +286,10 @@ What happened?
 │
 ├── .Rprofile          # Activate renv on project opening
 │
-├── renv
+├── renv/
 │   ├── .gitignore
 │   ├── activate.R
-│   ├── library
+│   ├── library/
 │   └── settings.dcf
 │
 └── renv.lock
@@ -311,10 +311,10 @@ What happened?
 │
 ├── .Rprofile          # Activate renv on project opening
 │
-├── renv
+├── renv/
 │   ├── .gitignore     # Ignore large renv files (e.g. packages)
 │   ├── activate.R     # R script to launch renv
-│   ├── library        # R packages
+│   ├── library/       # R packages
 │   └── settings.dcf   # renv settings
 │
 └── renv.lock
@@ -337,10 +337,10 @@ What happened?
 │
 ├── .Rprofile          # Activate renv on project opening
 │
-├── renv
+├── renv/
 │   ├── .gitignore     # Ignore large renv files (e.g. packages)
 │   ├── activate.R     # R script to launch renv
-│   ├── library        # R packages
+│   ├── library/       # R packages
 │   └── settings.dcf   # renv settings
 │
 └── renv.lock          # Packages metadata - Lockfile
@@ -354,7 +354,7 @@ What happened?
 ```
 {
   "R": {
-    "Version": "4.3.1",
+    "Version": "4.3.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -487,7 +487,7 @@ renv::snapshot()
 ##
 ## Do you want to proceed? [y/N]: y
 ## 
-## * Lockfile written to '~/Desktop/myproject/renv.lock'.
+## * Lockfile written to '~/Documents/myproject/renv.lock'.
 ```
 
 --
@@ -526,11 +526,11 @@ renv::snapshot()
 ## The following package(s) will be updated in the lockfile:
 ## 
 ## # CRAN ===============================
-## - ggplot2        [* -> 3.4.4]
+## - ggplot2        [3.4.4 -> *]
 ##
 ## Do you want to proceed? [y/N]: y
 ## 
-## * Lockfile written to '~/Desktop/myproject/renv.lock'.
+## * Lockfile written to '~/Documents/myproject/renv.lock'.
 ```
 
 
@@ -581,13 +581,12 @@ renv::restore()
 ## 
 ## Do you want to proceed? [y/N]: y
 ##
-## Installing ggplot2 [3.3.5] ...
+## Installing ggplot2 [3.4.4] ...
 ##   OK [linked cache]
 ```
 
---
 
-- If you only share the *lockfile* your collaborator needs to run `renv::init()` before
+`r fontawesome::fa_i("hand-point-right")`&nbsp; If you only share the *lockfile* your collaborator needs to run `renv::init()` before
 
 --
 
