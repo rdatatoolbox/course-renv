@@ -19,3 +19,11 @@
 # User-specific files ----
 README.html
 inst/doc
+.Rbuildignore
+
+# Quarto files ----
+index.html
+index_files/
+sections/*.html
+sections/*_files
+/.quarto/

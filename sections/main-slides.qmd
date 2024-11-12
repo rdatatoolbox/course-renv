@@ -1,0 +1,542 @@
+## Context
+
+- **`Research compendium`** for file organization
+- Writing **`functions`** for code optimization
+- **`Quarto`** | **`RMarkdown`** for literate programming
+- **`git`** for version control
+- **`GitHub`** for sharing & collaboration
+
+<br/>
+
+. . .
+
+
+All these tools aim to make your **code and data** more reproducible.
+
+
+<br/>
+
+. . .
+
+
+{{< fa circle-right >}} &nbsp;What about the **computational environment**?
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+- {{< fa brands r-project >}} &nbsp;packages (and versions)
+- {{< fa brands r-project >}} &nbsp;version
+- software and system libraries
+- operating system
+:::
+
+
+::::
+
+
+
+## Context
+
+- **`Research compendium`** for file organization
+- Writing **`functions`** for code optimization
+- **`Quarto`** | **`RMarkdown`** for literate programming
+- **`git`** for version control
+- **`GitHub`** for sharing & collaboration
+
+<br/>
+
+
+
+
+All these tools aim to make your **code and data** more reproducible.
+
+
+<br/>
+
+
+
+
+{{< fa circle-right >}} &nbsp;What about the **computational environment**?
+
+
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+- {{< fa brands r-project >}} &nbsp;**packages (and versions)**
+- [{{< fa brands r-project >}} &nbsp;version]{.gray}
+- [software and system libraries]{.gray}
+- [operating system]{.gray}
+:::
+
+
+::::
+
+
+
+## What is the issue with packages?
+
+- Packages rapidly **change over time** (versions)
+- **Code breaks** between major versions
+- Accessible from **different repositories** (CRAN, GitHub)
+- Only **one version** of a package can be **installed**
+- A package can have **many dependencies**
+
+. . .
+
+<br/>
+
+**`Questions`**
+
+- Will my project work on **another laptop**?
+- Will my project work **in the future**?
+- How to deal with projects requiring different versions of a same package?
+
+. . .
+
+<br/>
+
+{{< fa circle-right >}} &nbsp;We have to specify, the required **packages**, their **versions**, and the **repositories** in which they are accessible!
+
+
+
+
+## The `renv` package
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+![](images/renv-screenshot.png)
+
+<br>
+
+::: {.small}
+Available at: <https://rstudio.github.io/renv/>
+:::
+
+:::
+
+
+::: {.column width=50%}
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+
+# Install 'renv' package ----
+install.packages("renv")
+```
+
+<br>
+
+:::{.small}
+
+| Function         | Description                                                 |
+|:-----------------|:------------------------------------------------------------|
+| `init()`         | Initialize `renv` in a project                              |
+| `status()`       | Check consistencies between lockfile & project library      |
+| `snapshot()`     | Record current state of the project library in the lockfile |
+| `restore()`      | Restore project library from a lockfile                     |
+| `install()`      | Install packages in the project library                     |
+| `remove()`       | Remove packages from the project library                    |
+| `deactivate()`   | Temporary deactivate `renv` for the project                 |
+| `activate()`     | (Re)activate `renv` in the project                          |
+
+: Table: Main functions of `renv`
+:::
+
+:::
+::::
+
+
+## Library vs. package
+
+. . .
+
+**`PACKAGE`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A well-structured collection of **functions**, **documentation**, **data**, and **tests**.
+:::
+
+::::
+
+
+. . .
+
+<br/>
+
+
+**`LIBRARY`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A **directory** in which packages will be installed.
+:::
+
+::::
+
+. . .
+
+<br/>
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Available libraries ----
+
+.libPaths()
+
+## [1] "/home/nicolas/.local/bin/R/x86_64-pc-linux-gnu-library/4.4"
+## [2] "/usr/lib/R/library"
+```
+
+<br/>
+
+::: {.small}
+  **`[1]`** is the **User** library<br/>
+  **`[2]`** is the **System** library
+:::
+:::
+
+
+::: {.column width=50%}
+
+:::
+
+::::
+
+
+
+## Library vs. package
+
+
+**`PACKAGE`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A well-structured collection of **functions**, **documentation**, **data**, and **tests**.
+:::
+
+::::
+
+
+
+<br/>
+
+
+**`LIBRARY`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A **directory** in which packages will be installed.
+:::
+
+::::
+
+
+<br/>
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Available libraries ----
+
+.libPaths()
+
+## [1] "/home/nicolas/.local/bin/R/x86_64-pc-linux-gnu-library/4.4"
+## [2] "/usr/lib/R/library"
+```
+
+<br/>
+
+::: {.small}
+  **`[1]`** is the **User** library<br/>
+  **`[2]`** is the **System** library
+:::
+:::
+
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Locate core package ----
+
+find.package("utils")
+
+## [1] "/usr/lib/R/library/"
+```
+:::
+
+::::
+
+
+
+## Library vs. package
+
+
+**`PACKAGE`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A well-structured collection of **functions**, **documentation**, **data**, and **tests**.
+:::
+
+::::
+
+
+
+
+<br/>
+
+
+**`LIBRARY`**
+
+:::: {.columns}
+
+::: {.column width=5%}
+:::
+
+
+::: {.column width=95%}
+A **directory** in which packages will be installed.
+:::
+
+::::
+
+
+
+<br/>
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Available libraries ----
+
+.libPaths()
+
+## [1] "/home/nicolas/.local/bin/R/x86_64-pc-linux-gnu-library/4.4"
+## [2] "/usr/lib/R/library"
+```
+
+<br/>
+
+::: {.small}
+  **`[1]`** is the **User** library<br/>
+  **`[2]`** is the **System** library
+:::
+:::
+
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Locate core package ----
+
+find.package("utils")
+
+## [1] "/usr/lib/R/library/"
+```
+
+<br/>
+
+```{r}
+#| echo: true
+#| eval: false
+
+## Locate other package ----
+
+find.package("rmarkdown")
+
+## [1] "/home/nicolas/.local/bin/R/x86_64-pc-linux-gnu-library/4.4/"
+
+```
+:::
+
+::::
+
+
+
+## Library system
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+![Default {{< fa brands r-project >}} &nbsp;behaviour](images/library-1.png)
+:::
+
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## Library system
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+![Default {{< fa brands r-project >}} &nbsp;behaviour](images/library-1.png)
+:::
+
+
+::: {.column width=50%}
+![Library system with `renv`](images/library-2a.png)
+
+:::
+
+::::
+
+
+## Library system
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+![Default {{< fa brands r-project >}} &nbsp;behaviour](images/library-1.png)
+:::
+
+
+::: {.column width=50%}
+![Library system with `renv`](images/library-2b.png)
+
+:::
+
+::::
+
+
+## Initialize renv in a project
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Initialize renv in a project ----
+
+renv::init()
+```
+:::
+
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## Initialize renv in a project
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Initialize renv in a project ----
+
+renv::init()
+```
+
+<br/>
+
+Alternatively, for a new project:
+
+![](images/rstudio-renv.png){width=60%}
+:::
+
+
+::: {.column width=50%}
+:::
+
+::::
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+```
+R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+- Project '~/Documents/myproject' loaded. [renv 1.0.11]
+>
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
