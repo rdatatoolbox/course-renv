@@ -23,19 +23,17 @@ All these tools aim to make your **code and data** more reproducible.
 
 . . .
 
-<br/>
-
 :::: {.columns}
 
-::: {.column width=5%}
+::: {.column width=3%}
 :::
 
 
-::: {.column width=95%}
+::: {.column width=97%}
 - {{< fa brands r-project >}} &nbsp;packages (and versions)
 - {{< fa brands r-project >}} &nbsp;version
-- software and system libraries
-- operating system
+- Software and system libraries
+- Operating system
 :::
 
 
@@ -68,19 +66,17 @@ All these tools aim to make your **code and data** more reproducible.
 
 
 
-<br/>
-
 :::: {.columns}
 
-::: {.column width=5%}
+::: {.column width=3%}
 :::
 
 
-::: {.column width=95%}
+::: {.column width=97%}
 - {{< fa brands r-project >}} &nbsp;**packages (and versions)**
 - [{{< fa brands r-project >}} &nbsp;version]{.gray}
-- [software and system libraries]{.gray}
-- [operating system]{.gray}
+- [Software and system libraries]{.gray}
+- [Operating system]{.gray}
 :::
 
 
@@ -92,7 +88,7 @@ All these tools aim to make your **code and data** more reproducible.
 
 - Packages rapidly **change over time** (versions)
 - **Code breaks** between major versions
-- Accessible from **different repositories** (CRAN, GitHub)
+- Accessible from **different repositories** (CRAN, GitHub, R Universe, etc.)
 - Only **one version** of a package can be **installed**
 - A package can have **many dependencies**
 
@@ -470,29 +466,7 @@ find.package("rmarkdown")
 ::::
 
 
-## Initialize renv in a project
-
-:::: {.columns}
-
-::: {.column width=50%}
-```{r}
-#| echo: true
-#| eval: false
-
-## Initialize renv in a project ----
-
-renv::init()
-```
-:::
-
-
-::: {.column width=50%}
-:::
-
-::::
-
-
-## Initialize renv in a project
+## Initialize `renv` in a project
 
 :::: {.columns}
 
@@ -508,24 +482,6 @@ renv::init()
 
 <br/>
 
-Alternatively, for a new project:
-
-![](images/rstudio-renv.png){width=60%}
-:::
-
-
-::: {.column width=50%}
-:::
-
-::::
-
-. . .
-
-<br/>
-
-:::: {.columns}
-
-::: {.column width=50%}
 ```
 R version 4.4.2 (2024-10-31) -- "Pile of Leaves"
 Copyright (C) 2024 The R Foundation for Statistical Computing
@@ -540,3 +496,726 @@ Platform: x86_64-pc-linux-gnu
 :::
 
 ::::
+
+
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+Alternatively, for a new project:
+
+![](images/rstudio-renv.png){width=70%}
+:::
+
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## What happened?
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```
+.
+├── .Rprofile
+│
+├── renv/
+│   ├── .gitignore
+│   ├── activate.R
+│   ├── library/
+│   └── settings.dcf
+│
+└── renv.lock
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## What happened?
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```
+.
+├── .Rprofile          # Activate renv on project opening
+│
+├── renv/
+│   ├── .gitignore
+│   ├── activate.R
+│   ├── library/
+│   └── settings.dcf
+│
+└── renv.lock
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+## What happened?
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```
+.
+├── .Rprofile          # Activate renv on project opening
+│
+├── renv/
+│   ├── .gitignore     # Ignore large renv files (e.g. packages)
+│   ├── activate.R     # R script to launch renv
+│   ├── library/       # R packages
+│   └── settings.dcf   # renv settings
+│
+└── renv.lock
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+
+## What happened?
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+```
+.
+├── .Rprofile          # Activate renv on project opening
+│
+├── renv/
+│   ├── .gitignore     # Ignore large renv files (e.g. packages)
+│   ├── activate.R     # R script to launch renv
+│   ├── library/       # R packages
+│   └── settings.dcf   # renv settings
+│
+└── renv.lock          # Packages metadata, a.k.a the Lockfile
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+
+## The lockfile
+
+It's a simple **`JSON`** (JavaScript Object Notation) file that specifies package metadata:
+
+- package name
+- package version
+- package repository URL
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Preview of a lockfile** (`renv.lock`)
+:::
+
+::: {.column width=50%}
+```
+{
+  "R": {
+  
+    "Version": "4.4.2",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+  
+  "Packages": {
+  
+    "renv": {
+      "Package": "renv",
+      "Version": "1.0.11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+         "utils"
+      ],
+      "Hash": "47623f66b4e80b3b0587bc5d7b309888"
+    }
+  }
+}
+```
+:::
+
+::::
+
+
+
+
+## The lockfile
+
+It's a simple **`JSON`** (JavaScript Object Notation) file that specifies package metadata:
+
+- package name
+- package version
+- package repository URL
+
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+**Preview of a lockfile** (`renv.lock`)
+
+<br/><br/><br/><br/>
+
+{{< fa circle-right >}}&nbsp; To collaborate you only need to **share the `renv.lock`**
+
+:::
+
+::: {.column width=50%}
+```
+{
+  "R": {
+  
+    "Version": "4.4.2",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+  
+  "Packages": {
+  
+    "renv": {
+      "Package": "renv",
+      "Version": "1.0.11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+         "utils"
+      ],
+      "Hash": "47623f66b4e80b3b0587bc5d7b309888"
+    }
+  }
+}
+```
+:::
+
+::::
+
+
+
+## Working w/ `renv`
+
+- **`renv::status()`** is your friend: 
+
+> Use this function at any time to check inconsistencies between lockfile, library, and dependencies
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** but **not installed** in the project library
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are used in this project, but are 
+## not installed:
+## - fs
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+:::
+
+::::
+
+
+## Working w/ `renv`
+
+- **`renv::status()`** is your friend
+
+> Use this function at any time to check inconsistencies between lockfile, library, and dependencies
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** but **not installed** in the project library
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are used in this project, but are 
+## not installed:
+## - fs
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** and **installed** but **not recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are in an inconsistent state:
+## 
+## package installed recorded used
+## fs      y         n        y 
+```
+:::
+
+::::
+
+
+
+## Working w/ `renv`
+
+- **`renv::status()`** is your friend
+
+> Use this function at any time to check inconsistencies between lockfile, library, and dependencies
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** but **not installed** in the project library
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are used in this project, but are 
+## not installed:
+## - fs
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** and **installed** but **not recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are in an inconsistent state:
+## 
+## package installed recorded used
+## fs      y         n        y 
+```
+:::
+
+::::
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used**, **installed** and **recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## No issues found -- the project is in a consistent state. 
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+:::
+
+::::
+
+
+
+## Working w/ `renv`
+
+- **`renv::status()`** is your friend
+
+> Use this function at any time to check inconsistencies between lockfile, library, and dependencies
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** but **not installed** in the project library
+:::
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are used in this project, but are 
+## not installed:
+## - fs
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used** and **installed** but **not recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are in an inconsistent state:
+## 
+## package installed recorded used
+## fs      y         n        y 
+```
+:::
+
+::::
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **used**, **installed** and **recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## No issues found -- the project is in a consistent state. 
+```
+:::
+
+::: {.column width=10%}
+:::
+
+::: {.column width=45%}
+::: {.small}
+{{< fa circle-right >}}&nbsp; Package **not used** but **recorded** in the lockfile
+:::
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+renv::status()
+
+## The following package(s) are in an inconsistent state:
+## 
+## package installed recorded used
+## fs      y         y        n  
+```
+:::
+
+::::
+
+
+## Installing packages
+
+- Use the function **`renv::install()`** to install packages in your project library
+
+> You can install the latest version of a package, a specific version of a package, a package from GitHub, GitLab, etc.
+
+<br/>
+
+. . .
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Install the latest version from CRAN ----
+renv::install("devtools")
+
+## Install a specific version ----
+renv::install("devtools@2.3.0")
+
+## Install the development version from GitHub ----
+renv::install("r-lib/devtools")
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+<br/>
+
+. . .
+
+
+{{< fa circle-right >}}&nbsp; If you have a **DESCRIPTION** file w/ a list of packages, you can install all required packages as follow:
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Install (latest versions) of packages listed in DESCRIPTION ----
+renv::install()
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+
+
+## Updating the lockfile
+
+- Use the function **`renv::snapshot()`** to update the lockfile (`renv.lock`)
+
+> This function will add and/or remove package metadata in the lockfile
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Update the lockfile ----
+renv::snapshot()
+
+## The following package(s) will be updated in the lockfile:
+## 
+## # CRAN ----------------------------------------------------
+## - fs    [1.6.5 -> *]
+## - cli   [* -> 3.6.3]
+```
+:::
+
+::: {.column width=5%}
+:::
+
+::: {.column width=45%}
+
+::: {.small}
+<br/>
+
+- We **remove** the `fs` package metadata from the lockfile
+- We **add** the `cli` package metadata to the lockfile
+:::
+:::
+
+::::
+
+
+
+## Collaborating w/ `renv`
+
+- Just share the **`renv.lock`** file
+
+. . .
+
+<br/>
+
+Then your colleague will have to **initialize `renv`** in the project and follow instructions:
+
+
+. . .
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=60%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Initialize renv & restore environment ----
+renv::init()
+
+## This project already has a lockfile. What would you like to do? 
+## 
+## 1: Restore the project from the lockfile.
+## 2: Discard the lockfile and re-initialize the project.
+## 3: Activate the project without snapshotting or installing any packages.
+## 4: Abort project initialization.
+## 
+## Selection: 1
+## The following package(s) will be updated:
+## 
+## # CRAN -----------------------------------------------------------------
+## - fs     [* -> 1.6.5]
+## - renv   [* -> 1.0.11]
+## 
+## # Downloading packages -------------------------------------------------
+## 
+## ...
+## 
+## # Installing packages --------------------------------------------------
+## - Installing fs ...            OK [linked from cache]
+## - Installing renv ...          OK [built from source and cached in 8.6s]
+## 
+## - Project '~/Documents/myproject' loaded. [renv 1.0.11]
+```
+:::
+
+::: {.column width=5%}
+:::
+
+::: {.column width=35%}
+
+::: {.small}
+<br/><br/><br/>
+
+{{< fa circle-right >}}&nbsp; All packages (w/ the good version) listed in the lockfile **will be automatically installed** in the project library
+:::
+:::
+
+::::
+
+
+
+## Recommendations
+
+{{< fa circle-right >}}&nbsp; Use `renv` at the **end of the project** to freeze your packages environment and share the **`renv.lock`**
+
+
+<br/>
+
+:::: {.columns}
+
+::: {.column width=50%}
+```{r}
+#| echo: true
+#| eval: false
+
+## Initialize renv (at the end of the project) ----
+renv::init()
+
+## Update the lockfile (and install missing packages) ----
+renv::snapshot()
+
+## Check lockfile status ----
+renv::status()
+```
+:::
+
+::: {.column width=50%}
+:::
+
+::::
+
+. . .
+
+<br/>
+
+{{< fa warning >}}&nbsp; Do not forget to add `renv/` and `.Rprofile` to the **`.gitignore`**
+
+
+# Thanks!
+
