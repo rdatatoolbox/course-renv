@@ -15,7 +15,7 @@ An introduction to `renv`
 :::
 
 ::: {.subtitle}
-Create reproducible environments for R projects
+Create reproducible environments for {{< fa brands r-project >}} projects
 :::
 
 ::: {.date}

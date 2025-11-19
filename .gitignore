@@ -27,3 +27,5 @@ index_files/
 sections/*.html
 sections/*_files
 /.quarto/
+*.html
+*_files/
