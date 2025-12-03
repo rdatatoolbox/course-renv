@@ -182,7 +182,6 @@ install.packages("renv")
 
 ## Library vs. package
 
-. . .
 
 **`PACKAGE`**
 
@@ -199,7 +198,6 @@ A well-structured collection of **functions**, **documentation**, **data**, and 
 ::::
 
 
-. . .
 
 <br/>
 
@@ -416,9 +414,9 @@ find.package("utils")
 #| eval: false
 
 # Locate other package ----
-find.package("rmarkdown")
+find.package("dplyr")
 
-# [1] "~/.local/bin/R/x86_64-redhat-linux-gnu-library/4.5/rmarkdown"
+# [1] "~/.local/bin/R/x86_64-redhat-linux-gnu-library/4.5/dplyr"
 
 ```
 :::
